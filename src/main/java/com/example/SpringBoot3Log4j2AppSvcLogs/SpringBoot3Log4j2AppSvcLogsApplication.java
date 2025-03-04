@@ -7,10 +7,11 @@ package com.example.SpringBoot3Log4j2AppSvcLogs;
 import org.slf4j.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@SpringBootApplication
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class SpringBoot3Log4j2AppSvcLogsApplication {
 
 	// Log4j2 version

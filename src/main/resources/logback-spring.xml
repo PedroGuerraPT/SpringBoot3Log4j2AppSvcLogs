@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-
-  <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
-    <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-        <layout class="ch.qos.logback.classic.PatternLayout">
-            <Pattern>
-                %-5level [%thread]: %message%n%throwable
-            </Pattern>
-        </layout>
+  <include resource="org/springframework/boot/logging/logback/base.xml" />
+  <logger name="com.abnamro.mulb" level="DEBUG" />
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{TRACE-ID}] %-5level %logger{36} - %msg%n
+      </pattern>
     </encoder>
   </appender>
-
-  <appender name="AppServiceAppLogsAppender" class="ch.qos.logback.core.ConsoleAppender">
-    <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-      <layout class="com.example.SpringBoot3Log4j2AppSvcLogs.AppServiceLogbackLayout" />
-    </encoder>
-  </appender>
-
   <root level="INFO">
-    <!-- <appender-ref ref="Console" /> -->
-    <appender-ref ref="AppServiceAppLogsAppender" />
+    <appender-ref ref="STDOUT" />
   </root>
 </configuration>
